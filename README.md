@@ -1,6 +1,6 @@
 # HistoryExplorerChatGPTPlugin
 
-An interactive plugin that uses SK and GPT to create personalized, immersive journeys through different historical eras, complete with interactive dialogues and historical trivia.
+An interactive plugin that uses SK and GPT to create personalised, immersive journeys through different historical eras, complete with interactive dialogues and historical trivia.
 
 This project contains the code for a ChatGPT plugin. It includes the following components:
 
@@ -53,3 +53,21 @@ dotnet build
 cd bin/Debug/net6.0
 func host start  
 ```
+
+If you want to preview it in an actual ChatGPT-like experience, use [Chat CoPilot](https://github.com/microsoft/chat-copilot) and point it to the local endpoint at `http://localhost:7071/.well-known/ai-plugin.json` to add the plugin while this project is running.
+
+## Technical information
+
+This project makes use of the new handlebars planner for generating multi-step plans, which uses Handlebars templates. This is instrumental in structuring historical narratives and interactions. For example, generating a story about a specific historical event or era.
+
+For native generation with GPT - Utilize templated assistant instructions for dynamically creating stories based on the historical context and user inputs
+
+Users can select time periods, ask questions, or interact with the narrative.
+
+Also need to make use of an assistant.
+
+### Building the Time Travel Experience
+
+Interactive Narratives: Use GPT to create engaging dialogues and descriptions of historical events and figures.
+
+Dynamic Story Creation: Employ Handlebars templates to structure the narratives dynamically, allowing for user choices to influence the story flow.
