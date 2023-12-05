@@ -1,13 +1,9 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Diagnostics;
-using Microsoft.SemanticKernel.SemanticFunctions;
-using Microsoft.SemanticKernel.SkillDefinition;
-using Microsoft.SemanticKernel.Text;
+using Microsoft.SemanticKernel.TemplateEngine;
+using Microsoft.SemanticKernel.TemplateEngine.Basic;
+
 
 namespace AIPlugins.AzureFunctions.Extensions;
 
@@ -39,13 +35,11 @@ public static class KernelExtensions
             }
 
             // Load prompt template
-            var template = new PromptTemplate(File.ReadAllText(promptPath), config, kernel.PromptTemplateEngine);
+            var template = new BasicPromptTemplate(File.ReadAllText(promptPath), config);
 
             // Prepare lambda wrapping AI logic
-            var functionConfig = new SemanticFunctionConfig(config, template);
-
-            kernel.Logger.LogTrace("Registering function {0}.{1} loaded from {2}", pluginName, functionName, dir);
-            plugin[functionName] = kernel.RegisterSemanticFunction(pluginName, functionName, functionConfig);
+            kernel.LoggerFactory.CreateLogger($"Registering function {pluginName}.{functionName} loaded from {dir}");
+            plugin[functionName] = kernel.RegisterSemanticFunction(pluginName, functionName, config, template);
         }
 
         return plugin;

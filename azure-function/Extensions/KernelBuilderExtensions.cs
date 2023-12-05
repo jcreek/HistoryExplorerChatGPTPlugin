@@ -14,7 +14,7 @@ internal static class KernelBuilderExtensions
         switch (kernelSettings.ServiceType.ToUpperInvariant())
         {
             case ServiceTypes.AzureOpenAI:
-                kernelBuilder.WithAzureChatCompletionService(deploymentName: kernelSettings.DeploymentOrModelId, endpoint: kernelSettings.Endpoint, apiKey: kernelSettings.ApiKey, serviceId: kernelSettings.ServiceId);
+                kernelBuilder.WithAzureOpenAIChatCompletionService(deploymentName: kernelSettings.DeploymentOrModelId, endpoint: kernelSettings.Endpoint, apiKey: kernelSettings.ApiKey, serviceId: kernelSettings.ServiceId);
                 break;
 
             case ServiceTypes.OpenAI:

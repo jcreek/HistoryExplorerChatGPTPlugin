@@ -1,12 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
 using System.Net;
-using System.Threading.Tasks;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Orchestration;
-using Microsoft.SemanticKernel.SkillDefinition;
 using Models;
 
 namespace AIPlugins.AzureFunctions.Extensions;
@@ -33,32 +31,24 @@ public class AIPluginRunner : IAIPluginRunner
         ContextVariables contextVariables = LoadContextVariablesFromRequest(req);
 
         var appSettings = AppSettings.LoadSettings();
+        var pluginsDirectory = Path.Combine(Directory.GetCurrentDirectory(),"Prompts");
+        var func = this._kernel.ImportPromptsFromDirectory(appSettings.AIPlugin.NameForModel, pluginsDirectory);
 
-        if (!this._kernel.Skills.TryGetFunction(
-            skillName: appSettings.AIPlugin.NameForModel,
-            functionName: operationId,
-            out ISKFunction? function))
+        var result = await this._kernel.RunAsync(contextVariables, func[operationId]);
+        if (result.FunctionResults.Last() == null)
         {
-            HttpResponseData errorResponse = req.CreateResponse(HttpStatusCode.NotFound);
-            await errorResponse.WriteStringAsync($"Function {operationId} not found");
-            return errorResponse;
-        }
-
-        var result = await this._kernel.RunAsync(contextVariables, function);
-        if (result.ErrorOccurred)
-        {
-            HttpResponseData errorResponse = req.CreateResponse(HttpStatusCode.BadRequest);
-            string? message = result?.LastException?.Message;
-            if (message != null)
+           HttpResponseData errorResponse = req.CreateResponse(HttpStatusCode.BadRequest);
+            string? message = result?.FunctionResults.Last()?.ToString();
+        if (message != null)
             {
-                await errorResponse.WriteStringAsync(message);
+                await errorResponse.WriteStringAsync(message);  
             }
             return errorResponse;
         }
 
         var response = req.CreateResponse(HttpStatusCode.OK);
         response.Headers.Add("Content-Type", "text/plain;charset=utf-8");
-        await response.WriteStringAsync(result.Result);
+        await response.WriteStringAsync(result.GetValue<string>());
         return response;
     }
 
