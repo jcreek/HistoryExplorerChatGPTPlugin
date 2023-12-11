@@ -1,4 +1,4 @@
-# HistoryExplorerChatGPTPlugin
+# Interactive History Explorer ChatGPT Plugin
 
 An interactive plugin that uses SK and GPT to create personalised, immersive journeys through different historical eras, complete with interactive dialogues and historical trivia.
 
