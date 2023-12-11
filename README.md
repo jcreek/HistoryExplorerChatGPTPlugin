@@ -58,15 +58,13 @@ If you want to preview it in an actual ChatGPT-like experience, use [Chat CoPilo
 
 ## Technical information
 
-This project makes use of the new handlebars planner for generating multi-step plans, which uses Handlebars templates. This is instrumental in structuring historical narratives and interactions. For example, generating a story about a specific historical event or era.
+This project makes use of whatever planner is the default for semantic skills in this type of project. Ideally it would make use of the new handlebars planner for generating multi-step plans, which uses Handlebars templates. This is instrumental in structuring historical narratives and interactions. For example, generating a story about a specific historical event or era. Unfortunately, with the release candidate releasing partway through the hackathon and a lack of documentation I was unable to work out how to switch to the new planner.
 
-For native generation with GPT - Utilize templated assistant instructions for dynamically creating stories based on the historical context and user inputs
-
-Users can select time periods, ask questions, or interact with the narrative.
-
-Also need to make use of an assistant.
+Likewise, an assistant persona could be created to make GPT respond more like an old storyteller or historian, but this was also not possible due to the lack of documentation. The plan was to utilize templated assistant instructions for dynamically creating stories based on the historical context and user inputs.
 
 ### Building the Time Travel Experience
+
+Users can select time periods, ask questions, or interact with the narrative.
 
 Interactive Narratives: Use GPT to create engaging dialogues and descriptions of historical events and figures.
 
