@@ -108,7 +108,13 @@ e.g. input "Abraham Lincoln"
 
 ## Future Enhancements
 
-Other than the handlebars planner and persona mentioned previously, it would be good to add access to an historical API to enable the plugin to provide more detailed information about historical events, figures, and technologies. This would allow the plugin to provide more detailed information about the historical context of the user's questions and choices, and to provide more detailed information about the historical figures and events that the user is interacting with. Currently it is relying entirely on GPT's awareness of history, which is not bad but could definitely be better.
+This project makes use of whatever planner is the default for semantic skills in this type of project. Ideally it would make use of the new handlebars planner for generating multi-step plans, which uses Handlebars templates. This is instrumental in structuring historical narratives and interactions. For example, generating a story about a specific historical event or era. Unfortunately, with the release candidate releasing partway through the hackathon and a lack of documentation I was unable to work out how to switch to the new planner.
+
+Likewise, an assistant persona could be created to make GPT respond more like an old storyteller or historian, but this was also not possible due to the lack of documentation. The plan was to utilize templated assistant instructions for dynamically creating stories based on the historical context and user inputs.
+
+It would also be good to add access to an historical API to enable the plugin to provide more detailed information about historical events, figures, and technologies. This would allow the plugin to provide more detailed information about the historical context of the user's questions and choices, and to provide more detailed information about the historical figures and events that the user is interacting with. Currently it is relying entirely on GPT's awareness of history, which is not bad but could definitely be better.
+
+Currently users can select time periods, ask questions, and interact with the narrative. To further build the time travel experience it would be good to hence this further by employing handlebars templates to structure the narratives dynamically, allowing for user choices to influence the story flow. This would make the experience more immersive and interactive, and would allow for more complex narratives to be created.
 
 ## Prerequisites
 
@@ -157,17 +163,3 @@ func host start
 ```
 
 If you want to preview it in an actual ChatGPT-like experience, use [Chat CoPilot](https://github.com/microsoft/chat-copilot) and point it to the local endpoint at `http://localhost:7071/.well-known/ai-plugin.json` to add the plugin while this project is running.
-
-## Technical information
-
-This project makes use of whatever planner is the default for semantic skills in this type of project. Ideally it would make use of the new handlebars planner for generating multi-step plans, which uses Handlebars templates. This is instrumental in structuring historical narratives and interactions. For example, generating a story about a specific historical event or era. Unfortunately, with the release candidate releasing partway through the hackathon and a lack of documentation I was unable to work out how to switch to the new planner.
-
-Likewise, an assistant persona could be created to make GPT respond more like an old storyteller or historian, but this was also not possible due to the lack of documentation. The plan was to utilize templated assistant instructions for dynamically creating stories based on the historical context and user inputs.
-
-### Building the Time Travel Experience
-
-Users can select time periods, ask questions, or interact with the narrative.
-
-Interactive Narratives: Use GPT to create engaging dialogues and descriptions of historical events and figures.
-
-Dynamic Story Creation: Employ Handlebars templates to structure the narratives dynamically, allowing for user choices to influence the story flow.
