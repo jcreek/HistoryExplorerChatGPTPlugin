@@ -10,9 +10,9 @@ This project contains the code for a ChatGPT plugin. It includes the following c
 
 ## Hackathon Submission
 
-This plugin was created as a submission for the second Microsoft Semantic Kernel hackathon, which ran from December 4th to 11th 2023. The aim of the hackathon was to get the community using the release candidates for Semantic Kernel, however an additional challenge came from the RC3 being released with breaking changes partway through the week, and no documentation being available for using the new features in this project type. As such, this project is a proof of concept for the idea of using SK to create interactive historical narratives, but is not a fully functional project.
+This plugin was created as a submission for the second Microsoft Semantic Kernel hackathon, which ran from December 4th to 11th 2023. The aim of the hackathon was to get the community using the release candidates for Semantic Kernel, however an additional challenge came from the three release candidates being released with breaking changes partway through the week, and no documentation being available for using the new features in this project type. As such, this project is a proof of concept for the idea of using SK to create interactive historical narratives, but is not a fully functional project.
 
-As part of this project, I ended up updating the example project codebase, [firstly to dotnet 8 and SKv1 preview 8](https://github.com/MicrosoftDocs/semantic-kernel-docs/pull/69) and [finally to SKv1 RC3]() to enable others to more easily create their plugins without having to work out how to update the example code themselves.
+As part of this project, I ended up updating the example project codebase, [firstly to dotnet 8 and SKv1 preview 8](https://github.com/MicrosoftDocs/semantic-kernel-docs/pull/69) and [finally to SKv1 RC3](https://github.com/MicrosoftDocs/semantic-kernel-docs/pull/71) to enable others to more easily create their plugins without having to work out how to update the example code themselves.
 
 There are six semantic skills provided to this plugin for the planner to access, to enable the creation of interactive historical narratives. These are:
 
